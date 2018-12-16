@@ -1,0 +1,17 @@
+- name: update yum 
+  yum:
+    update_cache: yes
+    
+- name: Install Php
+  yum:
+    name: php
+    
+- name: Install httpd
+  yum:
+    name: httpd
+    
+- name: Clone Git 
+  git: repo=https://github.com/madc93/php.git dest=/var/www/html
+  
+- name: Start httpd
+  service: name=httpd state=started enabled=yes
